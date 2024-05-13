@@ -9,5 +9,10 @@
     "setup": "rm -rf ./node_modules && npm i"
   },
   "author": "<Your Name>",
-  "license": "<LICENSE>"
+  "license": "<LICENSE>",
+  "dependencies": {
+    "@authorui/components": "github:author/authorui-components",
+    "@authorui/icons": "github:author/authorui-icons",
+    "@authorui/style": "github:author/style"
+  }
 }

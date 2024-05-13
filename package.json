@@ -5,18 +5,19 @@
   "version": "0.0.1-alpha",
   "description": "Description of your project's development environment goes here",
   "main": "index.js",
+  "config": {
+    "port": {
+      "dev": 3003,
+      "prod": 3004
+    }
+  },
   "scripts": {
-    "build": "cd build && node index.js",
-    "locally:prod": "npm run build && node server.js ./dist --port=3004 --compress --spa",
-    "locally": "node server.js ./src --port=3003 --spa",
-    "setup": "rm -rf ./node_modules && npm i && cd build && npm run setup && cd ../src && npm run setup && cd ../tests && npm run setup",
-    "test": "cd test && node index.js"
+    "build": "node ./node_modules/@authorui/build/index.js",
+    "locally:prod": "npm run build && node ./node_modules/@authorui/server/index.js ./dist --port=$npm_package_config_port_prod --compress --spa",
+    "locally": "node ./node_modules/@authorui/server/index.js ./src --port=$npm_package_config_port_dev --spa",
+    "setup": "rm -rf ./node_modules && npm i && npm link @authorui/build @authorui/server @authorui/test && cd src && npm run setup",
+    "test": "node ./node_modules/@authorui/test/index.js"
   },
   "author": "<Your Name>",
-  "license": "<LICENSE>",
-  "dependencies": {
-    "compression": "^1.7.4",
-    "express": "^4.18.2",
-    "express-history-api-fallback": "^2.2.1"
-  }
+  "license": "<LICENSE>"
 }
