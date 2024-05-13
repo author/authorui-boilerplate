@@ -15,9 +15,13 @@
     "build": "node ./node_modules/@authorui/build/index.js",
     "locally:prod": "npm run build && node ./node_modules/@authorui/server/index.js ./dist --port=$npm_package_config_port_prod --compress --spa",
     "locally": "node ./node_modules/@authorui/server/index.js ./src --port=$npm_package_config_port_dev --spa",
-    "setup": "rm -rf ./node_modules && npm i && npm link @authorui/build @authorui/server @authorui/test && cd src && npm run setup",
+    "setup": "rm -rf ./node_modules && npm i && cd src && npm run setup",
     "test": "node ./node_modules/@authorui/test/index.js"
   },
   "author": "<Your Name>",
-  "license": "<LICENSE>"
+  "license": "<LICENSE>",
+  "dependencies": {
+    "@authorui/build": "github:author/authorui-build",
+    "@authorui/server": "github:author/authorui-server"
+  }
 }
